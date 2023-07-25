@@ -5,18 +5,16 @@
  * @src:copy from
  * Return:string
  */
-char *_strcpy(char *dest,char *src)
+char *_strcpy(char *dest, char *src)
 {
-	int i = 0;
-	int x = 0;
+	int len = 0;
 
-	while (*(src + 1) != '\0')
+	while (*(src + len) != '\0')
 	{
-		i++;
+
+		*(dest + len) = *(src + len);
+		len++;
 	}
-	for (; x < 1; x++)
-	{
-	dest[1] = '\0';
-	return dest;
-	}
+	*(dest + len) = '\0';
+	return (dest);
 }
