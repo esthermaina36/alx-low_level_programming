@@ -1,17 +1,25 @@
 #include "main.h"
+#include <stdio.h>
 /**
- * _strlen - returns the length of the string
- * @s: string
- * Return: length
+ * ptr - function that divides
  */
-int _strlen(char *s)
-{
-	int longi = 0;
 
-	while (*s != '\0')
+void puts_half(char *str)
+{
+	int len = 0;
+	char *ptr = str;
+
+	while (*ptr != '\0')
 	{
-		longi++;
-		s++;
+	len++;
+	ptr++;
 	}
-	return (longi);
+	int start = len / 2;
+
+	while (str[start] != '\0')
+	{
+	putchar(str[start]);
+	start++;
+	}
+	putchar('\n');
 }
