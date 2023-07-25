@@ -1,25 +1,22 @@
 #include "main.h"
-#include <stdio.h>
 /**
- * ptr - function that divides
+ * puts_half - prints half of the string
+ * @str:input
  */
-
 void puts_half(char *str)
 {
 	int len = 0;
-	char *ptr = str;
 
-	while (*ptr != '\0')
+	while (*str != '\0')
 	{
-	len++;
-	ptr++;
+		len++;
+		str++;
 	}
-	int start = len / 2;
-
-	while (str[start] != '\0')
+	str -= (len / 2);
+	while (*str != '\0')
 	{
-	putchar(str[start]);
-	start++;
+		_putchar(*str);
+		str++;
 	}
-	putchar('\n');
+	_putchar('\n');
 }
