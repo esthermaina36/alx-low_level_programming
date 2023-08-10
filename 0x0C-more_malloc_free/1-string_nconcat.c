@@ -1,51 +1,40 @@
-#include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
+#include "main.h"
+
 /**
- * Concatenates two strings with a limit on the number of characters from the second string.
- * The returned pointer points to a newly allocated memory space containing the concatenated string.
- * The resulting string consists of s1, followed by the first n bytes of s2, and is null-terminated.
- *
- * @param s1 The first string to be included in the concatenation. If NULL, treated as an empty string.
- * @param s2 The second string to be included in the concatenation. If NULL, treated as an empty string.
- * @param n The maximum number of characters from s2 to be concatenated.
- * @return A pointer to the newly allocated concatenated string, or NULL if allocation fails.
- */
-char *concatenateStrings(const char *s1, const char *s2, size_t n)
+* *string_nconcat - concatenates n bytes of a string to another string
+* @s1: string to append to
+* @s2: string to concatenate from
+* @n: number of bytes from s2 to concatenate to s1
+* Return: pointer to resulting string
+*/
+char *string_nconcat(char *s1, char *s2, unsigned int n)
 {
-	if (s1 == NULL) s1 = "";
-	if (s2 == NULL) s2 = "";
+	char *s;
+	unsigned int i = 0, j = 0, len1 = 0, len2 = 0;
 
-	size_t s1_len = strlen(s1);
-	size_t s2_len = strlen(s2);
-	if (n >= s2_len) n = s2_len;
+	while (s1 && s1[len1])
+		len1++;
+	while (s2 && s2[len2])
+		len2++;
 
-	char *result = (char *)malloc(s1_len + n + 1);
-	if (result == NULL)
-	{
-		return NULL; // Allocation failed
-	}
-
-	strcpy(result, s1);
-	strncat(result, s2, n);
-	return result;
-}
-
-int main()
-{
-	const char *str1 = "Hello, ";
-	const char *str2 = "world!";
-	size_t n = 3;
-
-	char *concatenated = concatenateStrings(str1, str2, n);
-	if (concatenated != NULL)
-	{
-		printf("Concatenated string: %s\n", concatenated);
-		free(concatenated); // Remember to free the allocated memory
-	}
+	if (n < len2)
+		s = malloc(sizeof(char) * (len1 + n _ 1));
 	else
+		s = malloc(sizeof(char) * (len1 + len2 _ 1));
+
+	if (!s)
+		return (NULL);
+	while (i < len1)
 	{
-		printf("Concatenation failed.\n");
+		s[i] = s1[i];
+		i++;
 	}
-	return (0);
-}
+
+	while (n < len2 && i < (len1 + len2))
+		s[i++] = s2[j++];
+
+	s[i] = '\0';
+
+	return (s);
+}}
